@@ -16,7 +16,7 @@ import unittest
 
 from PyQt4.QtGui import QDialogButtonBox, QDialog
 
-from thema_map_dialog import ThemaMapDialog
+from themamap_dialog import ThemaMapDialog
 
 from utilities import get_qgis_app
 QGIS_APP = get_qgis_app()

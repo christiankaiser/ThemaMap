@@ -31,5 +31,6 @@ def classFactory(iface):  # pylint: disable=invalid-name
     :type iface: QgsInterface
     """
     #
-    from .thema_map import ThemaMap
+    print 'main.classFactory'
+    from .themamap import ThemaMap
     return ThemaMap(iface)

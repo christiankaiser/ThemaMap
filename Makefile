@@ -38,15 +38,16 @@ LOCALES =
 # translation
 SOURCES = \
 	__init__.py \
-	thema_map.py thema_map_dialog.py
+	themamap.py ui_themamap.py
 
 PLUGINNAME = ThemaMap
 
 PY_FILES = \
 	__init__.py \
-	thema_map.py thema_map_dialog.py
+	themamap.py 
+	#themamap_dialog.py
 
-UI_FILES = thema_map_dialog_base.ui
+UI_FILES = ui_themamap.ui  #.ui
 
 EXTRAS = metadata.txt icon.png
 

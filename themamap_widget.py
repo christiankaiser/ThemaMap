@@ -53,7 +53,6 @@ class ThemaMapWidget(QgsRendererV2Widget, Ui_ThemaMapWidget):
     choroplethSchemeTypes = ['sequential', 'divergent', 'qualitative']
     
     def __init__(self, layer, style, renderer):
-        print "ThemaMapWidget.__init__"
         QgsRendererV2Widget.__init__(self, layer, style)
         if renderer is None or renderer.type() != ThemaMapRenderer.rendererName:
             self.r = ThemaMapRenderer()
@@ -66,12 +65,10 @@ class ThemaMapWidget(QgsRendererV2Widget, Ui_ThemaMapWidget):
         self.loadUi()
     
     def renderer(self):
-        print "ThemaMapWidget.renderer"
         if self.valid: self.applyUi()
         return self.r
     
     def buildWidget(self):
-        print "ThemaMapWidget.buildWidget"
         self.symbolStyleFillColor = ColorButton(self.uSymbolStyleFillColor)
         self.symbolStyleStrokeColor = ColorButton(self.uSymbolStyleStrokeColor)
         self.choroplethFillColor = ColorButton(self.uChoroplethFillColor)
@@ -81,7 +78,6 @@ class ThemaMapWidget(QgsRendererV2Widget, Ui_ThemaMapWidget):
         """
         Fills the UI using the values in the renderer.
         """
-        print "ThemaMapWidget.loadUi"
         # prop symbol tab
         self.uPropSymbAttrMenu.clear()
         self.uPropSymbAttrMenu.addItem('<none>')
@@ -129,8 +125,6 @@ class ThemaMapWidget(QgsRendererV2Widget, Ui_ThemaMapWidget):
         """
         Applies the values in the UI to the renderer.
         """
-        print "ThemaMapWidget.applyUi"
-        print str(self.r)
         # prop symbol tab
         self.r.propsymbol.attr = str(self.uPropSymbAttrMenu.currentText())
         if self.r.propsymbol.attr == '<none>': self.r.propsymbol.attr = None
@@ -158,11 +152,9 @@ class ThemaMapWidget(QgsRendererV2Widget, Ui_ThemaMapWidget):
         self.r.choropleth.style.strokeWidth = self.uChoroplethStrokeWidth.value()
     
     def updateUiElements(self):
-        print "ThemaMapWidget.updateUiElements"
         pass
     
     def updateChoroplethScheme(self):
-        print "ThemaMapWidget.updateChoroplethScheme"
         schemetype = self.r.choropleth.type.lower()[0:3]
         nclasses = len(self.r.choropleth.colors)
         # remove all current color tables

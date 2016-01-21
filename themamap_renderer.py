@@ -14,8 +14,6 @@ class ThemaMapRenderer(QgsFeatureRendererV2):
     rendererName = "ThemaMapRenderer"
     
     def __init__(self):
-        #print "ThemaMapRenderer.__init__"
-        #print str(self)
         QgsFeatureRendererV2.__init__(self, ThemaMapRenderer.rendererName)
         self.propsymbol = ProportionalSymbolStyle(attr=None, calib_value=10, calib_size=1)
         self.choropleth = ChoroplethStyle(
@@ -28,24 +26,18 @@ class ThemaMapRenderer(QgsFeatureRendererV2):
         self.symbol.appendSymbolLayer(PropSymbolMarker())
     
     def save(self, doc):
-        print "ThemaMapRenderer.save"
         return doc
     
     def reload(self, element):
-        print "ThemaMapRenderer.reload"
         pass
     
     def startRender(self, context, layer):
-        #print "ThemaMapRenderer.startRender"
-        #print str(self.propsymbol)
         self.symbol.startRender(context)
     
     def stopRender(self, context):
-        #print "ThemaMapRenderer.stopRender"
         self.symbol.stopRender(context)
     
     def usedAttributes(self):
-        #print "ThemaMapRenderer.usedAttributes"
         attrs = []
         if self.propsymbol.attr: attrs.append(self.propsymbol.attr)
         if self.choropleth.attr: attrs.append(self.choropleth.attr)
@@ -53,7 +45,6 @@ class ThemaMapRenderer(QgsFeatureRendererV2):
         return attrs
     
     def symbolForFeature(self, feature):
-        #print "ThemaMapRenderer.symbolForFeature"
         # Calculate the value based on calibration value, size, and bias
         try:
             attrs = feature.attributeMap()
@@ -69,8 +60,6 @@ class ThemaMapRenderer(QgsFeatureRendererV2):
         return self.symbol
     
     def clone(self):
-        print "ThemaMapRenderer.clone"
-        print str(self)
         cl = ThemaMapRenderer()
         cl.propsymbol = self.propsymbol.clone()
         cl.choropleth = self.choropleth.clone()

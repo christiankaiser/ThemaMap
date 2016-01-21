@@ -10,7 +10,6 @@ class PropSymbolMarker(QgsMarkerSymbolLayerV2):
     symbolLayerName = "PropSymbolMarker"
     
     def __init__(self):
-        print "PropSymbolMarker.__init__"
         QgsMarkerSymbolLayerV2.__init__(self)
         self.size = 10
         self.stroke = QColor(0, 0, 0)
@@ -22,7 +21,6 @@ class PropSymbolMarker(QgsMarkerSymbolLayerV2):
         return self.symbolLayerName
     
     def properties(self):
-        print "PropSymbolMarker.properties"
         return {
             'size': str(self.size),
             'stroke': self.stroke,
@@ -32,20 +30,12 @@ class PropSymbolMarker(QgsMarkerSymbolLayerV2):
         }
     
     def startRender(self, context):
-        #print "PropSymbolMarker.startRender"
         pass
     
     def stopRender(self, context):
-        #print "PropSymbolMarker.stopRender"
         pass
     
     def renderPoint(self, point, context):
-        #print "PropSymbolMarker.renderPoint"
-        #print "   [size=%i, stroke=[%i,%i,%i], fill=[%i,%i,%i], strokeWidth=%f, symbol=%s]" % (
-        #    self.size, self.stroke.red(), self.stroke.green(), self.stroke.blue(),
-        #    self.fill.red(), self.fill.green(), self.fill.blue(), self.strokeWidth,
-        #    self.symbol
-        #)
         if self.size <= 0: return
         if self.symbol == 'square': return self.renderSquare(point, context)
         if self.symbol == 'circle': return self.renderCircle(point, context)
@@ -82,7 +72,6 @@ class PropSymbolMarker(QgsMarkerSymbolLayerV2):
             )
     
     def clone(self):
-        print "PropSymbolMarker.clone"
         cl = PropSymbolMarker()
         cl.size = self.size
         cl.stroke = self.stroke

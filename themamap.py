@@ -44,7 +44,6 @@ class ThemaMap:
             application at run time.
         :type iface: QgsInterface
         """
-        print 'ThemaMap.__init__'
         self.iface = iface
         ThemaMapRenderer.iface = iface
         ThemaMapRenderer.plugin = self
@@ -52,22 +51,18 @@ class ThemaMap:
 
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
-        print 'ThemaMap.initGui'
         self.metadata = ThemaMapRendererMetadata()
         QgsRendererV2Registry.instance().addRenderer(self.metadata)
         self.controller = ThemaMapController(self.iface)
 
 
     def unload(self):
-        print 'ThemaMap.unload'
         self.controller.unload()
     
     
     def canBeUninstalled(self):
-        print 'ThemaMap.canBeUninstalled'
         return self.controller.canBeUninstalled()
 
     def run(self):
-        print 'ThemaMap.run'
         pass
 
